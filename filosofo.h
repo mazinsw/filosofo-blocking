@@ -50,26 +50,10 @@ filosofo_t* filosofo_criar(const char* nome, mesa_t* mesa);
 void        filosofo_pensar(filosofo_t* f);
 
 /**
- * Tenta pegar os dois garfos, caso não consiga fica em estado de espera
- *
- * parâmetros:
- *   f: o filósofo que irá pegar os garfos
- */
-void        filosofo_pegar_garfos(filosofo_t* f);
-
-/**
- * Solta os garfos
- *
- * parâmetros:
- *   f: o filósofo que irá soltar os garfos
- */
-void        filosofo_soltar_garfos(filosofo_t* f);
-
-/**
- * Aguarda enquanto o filósofo está comendo
+ * Faz o filósofo pegar os garfos e comer
  * 
  * parâmetros:
- *   f: o filósofo que está comendo
+ *   f: o filósofo que irá comer
  */
 void        filosofo_comer(filosofo_t* f);
 

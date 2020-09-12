@@ -1,8 +1,7 @@
 CC     = gcc
 OBJS   = main.o \
          filosofo.o \
-         mesa.o \
-         semaphore.o
+         mesa.o
 
 LIBS   = -lpthread
 CFLAGS = 
@@ -23,8 +22,4 @@ filosofo.o: filosofo.c filosofo.h
 
 mesa.o: mesa.c mesa.h
 	$(CC) -Wall -s -c mesa.c -o mesa.o $(CFLAGS)
-
-
-semaphore.o: semaphore.c semaphore.h
-	$(CC) -Wall -s -c semaphore.c -o semaphore.o $(CFLAGS)
 

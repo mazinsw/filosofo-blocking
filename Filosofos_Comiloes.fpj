@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Project>
+    <Libs Value="-lpthread"/>
+    <Flags Value=""/>
+    <Target Value="Filosofos_Comiloes.exe"/>
+    <CommandLine Value=""/>
+    <CompilerOptions Value="-Wall -s"/>
+    <DeleteObjectsBefore Value="Yes"/>
+    <DeleteObjectsAfter Value="Yes"/>
+    <DeleteMakefileAfter Value="No"/>
+    <DeleteResourcesAfter Value="Yes"/>
+    <EnableTheme Value="No"/>
+    <RequiresAdmin Value="No"/>
+    <CompilerType Value="C"/>
+    <AppType Value="CONSOLE"/>
+    <Files>
+        <File Name="main.c"/>
+        <File Name="filosofo.h"/>
+        <File Name="filosofo.c"/>
+        <File Name="mesa.h"/>
+        <File Name="mesa.c"/>
+    </Files>
+</Project>

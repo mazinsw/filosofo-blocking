@@ -116,33 +116,31 @@ void* mesa_liberar_cadeira(cadeira_t* c)
 	return pessoa;
 }
 
-void mesa_pegar_garfos(cadeira_t* c)
+int mesa_pegar_garfos(cadeira_t* c)
 {
-	c->esquerda->garfo->dono = c;
-	c->garfo->dono = c;
+	int conseguiu = 0;
+
+	pthread_mutex_lock(&c->mesa->mutex);
+	// lado esquerdo                       lado direito
+	if(c->esquerda->garfo->dono == NULL && c->garfo->dono == NULL)
+	{
+		c->esquerda->garfo->dono = c;
+		c->garfo->dono = c;
+		conseguiu = 1;
+	}
+	pthread_mutex_unlock(&c->mesa->mutex);
+	return conseguiu;
 }
 
 void mesa_soltar_garfos(cadeira_t* c)
 {
-	c->garfo->dono = NULL;
-	c->esquerda->garfo->dono = NULL;
-}
-
-void mesa_iniciar_acao(cadeira_t* c)
-{
 	pthread_mutex_lock(&c->mesa->mutex);
-}
-
-void mesa_finalizar_acao(cadeira_t* c)
-{
+	if(c->esquerda->garfo->dono == c && c->garfo->dono == c)
+	{
+		c->garfo->dono = NULL;
+		c->esquerda->garfo->dono = NULL;
+	}
 	pthread_mutex_unlock(&c->mesa->mutex);
-}
-
-void* mesa_pessoa_visinha(cadeira_t* c, Lado lado)
-{
-	if(lado == Direito)
-		return c->direita->pessoa;
-	return c->esquerda->pessoa;
 }
 
 void mesa_destruir(mesa_t* m)
